@@ -1,0 +1,45 @@
+2021-06-30 10:49:21.9491[4][Error][System.IO.IOException: 文件“C:\Users\gz\OneDrive\.849C9593-D756-4E56-8D6E-42412F2A707B”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:49:24.2248[4][Error][System.IO.IOException: 文件“E:\个人\备份\OneDrive-Personal\05_代码\01.WalletLib-544.zip”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:51:23.9667[10][Error][System.IO.IOException: 文件“C:\Users\gz\OneDrive\.849C9593-D756-4E56-8D6E-42412F2A707B”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:51:29.4411[10][Error][System.IO.IOException: 文件“E:\个人\备份\OneDrive-Personal\05_代码\BCB主链交易数据区块扫描.zip”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:51:30.0045[10][Error][System.IO.IOException: 文件“E:\个人\备份\OneDrive-Personal\05_代码\BCB区块解析公共模块.zip”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:51:36.2441[10][Error][System.IO.IOException: 文件“E:\个人\备份\OneDrive-Personal\05_代码\LocalWalletLibFramework.zip”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 10:55:04.6979[4][Error][System.IO.IOException: 文件“C:\Users\gz\OneDrive\.849C9593-D756-4E56-8D6E-42412F2A707B”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 61]
+2021-06-30 11:07:10.4664[9][Error][System.IO.IOException: 文件“C:\Users\gz\OneDrive\.849C9593-D756-4E56-8D6E-42412F2A707B”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 72]
+2021-06-30 11:09:39.7426[10][Error][System.IO.IOException: 文件“D:\gz\OneDrive - 薅羊毛大学\.849C9593-D756-4E56-8D6E-42412F2A707B”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   在 System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   在 FileBackUp.FileMonitorLoaded.Copy(String FullName, String mPath, String bPath) 位置 D:\gz\代码\FileBackUp\FileMonitorLoaded.cs:行号 72]

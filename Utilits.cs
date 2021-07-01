@@ -14,7 +14,7 @@ namespace FileBackUp
             //检查文件是否存在，如果文件存在则进行计算，否则返回空值
             if (System.IO.File.Exists(fileName))
             {
-                using (System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                using (System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.ReadWrite))
                 {
                     //计算文件的MD5值
                     System.Security.Cryptography.MD5 calculator = System.Security.Cryptography.MD5.Create();
@@ -36,8 +36,15 @@ namespace FileBackUp
         /// <returns>true 文件一样</returns>
         public static bool FileCompare(string oldpath, string newpath)
         {
-            if (string.Compare(ComputeMD5(oldpath), ComputeMD5(newpath)) == 0)
-                return true;
+            try
+            {
+                if (string.Compare(ComputeMD5(oldpath), ComputeMD5(newpath)) == 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+
+            }
 
             return false;
         }

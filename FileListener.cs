@@ -121,17 +121,24 @@ namespace FileBackUp
         public void C()
         {
             String fullname = e.FullPath;
-            string newpath = fullname.Replace(srcPath, TargetPath).Replace("\\" + e.Name, "");
-            DirectoryInfo newFolder = new DirectoryInfo(newpath);
-            if (!newFolder.Exists)
+            string newpath = fullname.Replace(srcPath, TargetPath);
+
+            FileInfo nf = new FileInfo(newpath);
+            if (!nf.Directory.Exists)
             {
-                newFolder.Create();
+                nf.Directory.Create();
             }
 
-            if (!Utilits.FileCompare(fullname, newpath + "\\" + e.Name))
+            //DirectoryInfo newFolder = new DirectoryInfo(newpath);
+            //if (!newFolder.Exists)
+            //{
+            //    newFolder.Create();
+            //}
+
+            if (!Utilits.FileCompare(fullname, newpath))
             {
                 FileInfo aa = new FileInfo(e.FullPath);
-                aa.CopyTo(newpath + "\\" + e.Name, true);
+                aa.CopyTo(newpath, true);
             }
         }
     }

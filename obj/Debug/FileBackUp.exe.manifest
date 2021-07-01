@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileBackUp.exe" size="100816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileBackUp.exe" size="101840">
       <assemblyIdentity name="FileBackUp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UKAp3AGBRPeGlls7ISCNIyYRKmD3vhm4wH9gUASh6XI=</dsig:DigestValue>
+        <dsig:DigestValue>PmLnYwloACt9K2GHYNAnRPFy/HKZ3BMIyHNAIDywIg8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

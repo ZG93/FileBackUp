@@ -9,6 +9,7 @@ namespace FileBackUp
 {
     public class FileMonitorLoaded
     {
+        static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
         /// 开启备份时，主动备份一次
         /// </summary>
@@ -19,6 +20,17 @@ namespace FileBackUp
             Task.Factory.StartNew(() =>
             {
                 CopyFile(mPath, bPath);
+
+                lock (MainWindow.LockObject)
+                {
+                    if (!MainWindow.cancelFiles.Contains(mPath))
+                    {
+                        FileListener fileListener = new FileListener();
+                        fileListener.WatcherStrat(mPath, "*", true, true, bPath);
+                        MainWindow.FileLs.Add(mPath, fileListener);
+                    }
+                }
+
             }, TaskCreationOptions.LongRunning);
         }
 
@@ -50,12 +62,19 @@ namespace FileBackUp
 
         public static void Copy(string FullName, string mPath, string bPath)
         {
-            string newpath = FullName.Replace(mPath, bPath);
-
-            if (!Utilits.FileCompare(FullName, newpath))
+            try
             {
-                FileInfo aa = new FileInfo(FullName);
-                aa.CopyTo(newpath, true);
+                string newpath = FullName.Replace(mPath, bPath);
+
+                if (!Utilits.FileCompare(FullName, newpath))
+                {
+                    FileInfo aa = new FileInfo(FullName);
+                    aa.CopyTo(newpath, true);
+                }
+            }
+            catch (Exception exc)
+            {
+                Logger.Error($"{exc}");
             }
         }
 

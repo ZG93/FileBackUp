@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Security.Principal;
 using System.Windows;
 
 namespace FileBackUp
@@ -14,6 +15,10 @@ namespace FileBackUp
         internal ObservableCollection<LineSwitchShowModel> Lines_Model = new ObservableCollection<LineSwitchShowModel>();
 
         public static Dictionary<string, FileListener> FileLs = new Dictionary<string, FileListener>();
+
+        public static List<string> cancelFiles = new List<string>();
+
+        public static object LockObject = new object();
 
         public static Config oConfig = Config.GetConfig();
 
@@ -30,8 +35,8 @@ namespace FileBackUp
         {
             this.notifyIcon = new System.Windows.Forms.NotifyIcon
             {
-                BalloonTipText = "Hello, 文件监视器", //设置程序启动时显示的文本
-                Text = "文件监视器",//最小化到托盘时，鼠标点击时显示的文本
+                BalloonTipText = "自动备份启动", //设置程序启动时显示的文本
+                Text = "自动备份",//最小化到托盘时，鼠标点击时显示的文本
                 Icon = new Icon("FileBackUp.ico"),//程序图标
                 Visible = true
             };
@@ -79,20 +84,34 @@ namespace FileBackUp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //if (!IsAdministrator())
+            //{
+            //    MessageBox.Show("请使用管理员权限打开本程序！");
+            //    App.Current.Shutdown(0);
+            //}
+
             AddrListView.ItemsSource = Lines_Model;
             foreach (var m in oConfig.Dics)
             {
-                FileListener fileListener = new FileListener();
-                fileListener.WatcherStrat(m.Key, "*", true, true, m.Value);
-                FileLs.Add(m.Key, fileListener);
+                //FileListener fileListener = new FileListener();
+                //fileListener.WatcherStrat(m.Key, "*", true, true, m.Value);
+                //FileLs.Add(m.Key, fileListener);
                 Lines_Model.Add(new LineSwitchShowModel(m.Key, m.Value));
 
                 FileMonitorLoaded.Thread(m.Key, m.Value);
             }
 
             WindowState = WindowState.Minimized;
-
         }
+
+        public bool IsAdministrator()
+        {
+            WindowsIdentity current = WindowsIdentity.GetCurrent();
+            WindowsPrincipal windowsPrincipal = new WindowsPrincipal(current);
+            //WindowsBuiltInRole可以枚举出很多权限，例如系统用户、User、Guest等等
+            return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
 
         public void ShowStatus(string str)
         {
@@ -151,9 +170,9 @@ namespace FileBackUp
             oConfig.Dics.Add(this.MonitorDicPath.Text, this.BackUpPath.Text);
             Config.Write(oConfig);
 
-            FileListener fileListener = new FileListener();
-            fileListener.WatcherStrat(this.MonitorDicPath.Text, "*", true, true, this.BackUpPath.Text);
-            FileLs.Add(this.MonitorDicPath.Text, fileListener);
+            //FileListener fileListener = new FileListener();
+            //fileListener.WatcherStrat(this.MonitorDicPath.Text, "*", true, true, this.BackUpPath.Text);
+            //FileLs.Add(this.MonitorDicPath.Text, fileListener);
 
             FileMonitorLoaded.Thread(this.MonitorDicPath.Text, this.BackUpPath.Text);
 
@@ -208,10 +227,15 @@ namespace FileBackUp
                 oConfig.Dics.Remove(sc.MonitorPath);
             Config.Write(oConfig);
 
-            if (FileLs.ContainsKey(sc.MonitorPath))
+            lock (LockObject)
             {
-                FileLs[sc.MonitorPath].WatchStartOrSopt(false);
-                FileLs.Remove(sc.MonitorPath);
+                if (FileLs.ContainsKey(sc.MonitorPath))
+                {
+                    FileLs[sc.MonitorPath].WatchStartOrSopt(false);
+                    FileLs.Remove(sc.MonitorPath);
+                }
+                else
+                    cancelFiles.Add(sc.MonitorPath);
             }
         }
 

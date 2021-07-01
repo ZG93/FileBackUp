@@ -23,3 +23,4 @@ D:\gz\代码\FileBackUp\bin\Debug\FileBackUp.exe.manifest
 D:\gz\代码\FileBackUp\bin\Debug\FileBackUp.application
 D:\gz\代码\FileBackUp\obj\Debug\FileBackUp.exe.manifest
 D:\gz\代码\FileBackUp\obj\Debug\FileBackUp.application
+D:\gz\代码\FileBackUp\bin\Debug\NLog.config
